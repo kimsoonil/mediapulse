@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 배경 계층 — 명도 차이를 확실히 벌림 */
+  --bg-base: #0a0a12;
+  --bg-card: #16162a;
+  --bg-card-hover: #1c1c38;
+  --bg-elevated: #1e1e35;
+  --bg-surface: #1e1e35;
+
+  /* 테두리 — 눈에 보이는 수준으로 밝힘 */
+  --border: #2a2a45;
+  --border-hover: #3a3a60;
+
+  /* 텍스트 */
+  --text-primary: #f0f0f5;
+  --text-secondary: #9090a8;
+  --text-muted: #606078;
+
+  /* 강조색 */
+  --accent-amber: #f59e0b;
+  --accent-amber-rgb: 245, 158, 11;
+  --accent-red: #ef4444;
+  --accent-red-rgb: 239, 68, 68;
+  --accent-green: #10b981;
+  --accent-green-rgb: 16, 185, 129;
+  --accent-purple: #8b5cf6;
+  --accent-purple-rgb: 139, 92, 246;
+  --accent-blue: #3b82f6;
+  --accent-blue-rgb: 59, 130, 246;
+
+  /* 매체별 색상 시스템 (Section 1-3) */
+  --color-movie: #e74c3c;
+  --color-drama: #e67e22;
+  --color-anime: #3498db;
+  --color-game: #e74c6f;
+  --color-webtoon: #2ecc71;
+  --color-novel: #9b59b6;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Space Grotesk', 'Noto Sans KR', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-card); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--border-hover); }
+
+/* Animations */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+@keyframes barGrow {
+  from { width: 0; }
+}
+
+.fade-up {
+  animation: fadeUp 0.5s ease both;
+}
+
+/* Input / Select resets */
+input, select {
+  font-family: inherit;
+}
+
+select option {
+  background: var(--bg-elevated);
+}
+
+/* 스코어 숫자 — 모노스페이스 */
+.score-mono {
+  font-family: 'Bebas Neue', 'Space Grotesk', monospace;
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+  .main-layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .trending-sidebar-horizontal {
+    display: flex;
+    overflow-x: auto;
+    gap: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .filter-bar {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
