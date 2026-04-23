@@ -47,14 +47,15 @@ export default function HomeClient({ contents, trending }: HomeClientProps) {
   }, [contents, activeTab, search, selectedGenre, selectedPlatform, sortBy]);
 
   const selectStyle: CSSProperties = {
-    background: "#16162a",
-    border: "1px solid #2a2a45",
+    background: "#ffffff",
+    border: "1px solid #e2e8f0",
     borderRadius: 8,
     padding: "7px 12px",
-    color: "#c0c0d0",
+    color: "#475569",
     fontSize: 12,
     cursor: "pointer",
     outline: "none",
+    boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
   };
 
   return (
@@ -101,7 +102,7 @@ export default function HomeClient({ contents, trending }: HomeClientProps) {
                 ))}
               </select>
 
-              <span style={{ fontSize: 12, color: "#606078", marginLeft: "auto" }}>{filtered.length}개 결과</span>
+              <span style={{ fontSize: 12, color: "#94a3b8", marginLeft: "auto" }}>{filtered.length}개 결과</span>
             </div>
 
             {filtered.length > 0 ? (
@@ -113,7 +114,7 @@ export default function HomeClient({ contents, trending }: HomeClientProps) {
                 ))}
               </div>
             ) : (
-              <div style={{ textAlign: "center", padding: 60, color: "#2a2a45", fontSize: 14 }}>
+              <div style={{ textAlign: "center", padding: 60, color: "#cbd5e1", fontSize: 14 }}>
                 검색 결과가 없습니다
               </div>
             )}

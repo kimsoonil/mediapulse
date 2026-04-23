@@ -11,7 +11,7 @@ export default function HeatBar({ value }: HeatBarProps) {
         style={{
           width: 80,
           height: 4,
-          background: "#1e1e35",
+          background: "#e2e8f0",
           borderRadius: 2,
           overflow: "hidden",
         }}
@@ -26,7 +26,7 @@ export default function HeatBar({ value }: HeatBarProps) {
           }}
         />
       </div>
-      <span style={{ fontSize: 11, color: "#9090a8", fontFamily: "monospace" }}>{value}</span>
+      <span style={{ fontSize: 11, color: "#94a3b8", fontFamily: "monospace" }}>{value}</span>
     </div>
   );
 }

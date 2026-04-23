@@ -13,10 +13,10 @@ function ScoreChart({ items }: { items: { type: ContentType; score: number; labe
     <div style={{ display: "flex", flexDirection: "column", gap: 7 }}>
       {sorted.map((row) => (
         <div key={row.label} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ width: 52, fontSize: 11, color: "#9090a8", flexShrink: 0, textAlign: "right" }}>
+          <span style={{ width: 52, fontSize: 11, color: "#94a3b8", flexShrink: 0, textAlign: "right" }}>
             {row.label}
           </span>
-          <div style={{ flex: 1, height: 8, borderRadius: 4, background: "#2a2a45", overflow: "hidden" }}>
+          <div style={{ flex: 1, height: 8, borderRadius: 4, background: "#f1f5f9", overflow: "hidden" }}>
             <div
               style={{
                 height: "100%",
@@ -32,7 +32,7 @@ function ScoreChart({ items }: { items: { type: ContentType; score: number; labe
               width: 32,
               fontSize: 14,
               fontWeight: 800,
-              color: "#f0f0f5",
+              color: "#0f172a",
               fontFamily: "'Bebas Neue', monospace",
               textAlign: "right",
             }}
@@ -45,24 +45,24 @@ function ScoreChart({ items }: { items: { type: ContentType; score: number; labe
   );
 }
 
-/* ── 평점 별 분포 (왓챠 스타일) ── */
+/* ── 평점 별 분포 ── */
 function ScoreDistribution({ communityScore }: { communityScore: number }) {
   const pct = communityScore * 10;
   const tiers = [
-    { label: "매우 좋음", color: "#2ecc71", pct: Math.round(pct * 0.55) },
+    { label: "매우 좋음", color: "#16a34a", pct: Math.round(pct * 0.55) },
     { label: "좋음", color: "#f59e0b", pct: Math.round(pct * 0.28) },
-    { label: "보통", color: "#9090a8", pct: Math.round(pct * 0.1) },
-    { label: "별로", color: "#e67e22", pct: Math.round(pct * 0.04) },
-    { label: "싫음", color: "#e74c3c", pct: Math.max(1, 100 - pct) },
+    { label: "보통", color: "#94a3b8", pct: Math.round(pct * 0.1) },
+    { label: "별로", color: "#ea580c", pct: Math.round(pct * 0.04) },
+    { label: "싫음", color: "#ef4444", pct: Math.max(1, 100 - pct) },
   ];
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
       {tiers.map((t) => (
         <div key={t.label} style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span style={{ width: 52, fontSize: 10, color: "#9090a8", textAlign: "right", flexShrink: 0 }}>
+          <span style={{ width: 52, fontSize: 10, color: "#94a3b8", textAlign: "right", flexShrink: 0 }}>
             {t.label}
           </span>
-          <div style={{ flex: 1, height: 6, borderRadius: 3, background: "#2a2a45", overflow: "hidden" }}>
+          <div style={{ flex: 1, height: 6, borderRadius: 3, background: "#f1f5f9", overflow: "hidden" }}>
             <div
               style={{
                 height: "100%",
@@ -73,7 +73,7 @@ function ScoreDistribution({ communityScore }: { communityScore: number }) {
               }}
             />
           </div>
-          <span style={{ width: 28, fontSize: 10, color: "#606078", textAlign: "right" }}>{t.pct}%</span>
+          <span style={{ width: 28, fontSize: 10, color: "#94a3b8", textAlign: "right" }}>{t.pct}%</span>
         </div>
       ))}
     </div>
@@ -102,12 +102,13 @@ function MediaChip({
         gap: 10,
         padding: "10px 18px",
         borderRadius: 12,
-        border: `1px solid ${isActive ? color : "#2a2a45"}`,
+        border: `1px solid ${isActive ? color : "#e2e8f0"}`,
         borderLeft: `3px solid ${color}`,
-        background: isActive ? `${color}18` : "#1e1e35",
+        background: isActive ? `${color}12` : "#f8fafc",
         textDecoration: "none",
         transition: "all 0.2s",
         flexShrink: 0,
+        boxShadow: isActive ? `0 2px 10px ${color}22` : "0 1px 3px rgba(0,0,0,0.05)",
       }}
     >
       <span style={{ fontSize: 11, fontWeight: 800, color, letterSpacing: 0.5 }}>{type}</span>
@@ -116,7 +117,7 @@ function MediaChip({
           style={{
             fontSize: 22,
             fontWeight: 900,
-            color: "#f0f0f5",
+            color: "#0f172a",
             fontFamily: "'Bebas Neue', monospace",
             lineHeight: 1,
           }}
@@ -129,7 +130,7 @@ function MediaChip({
           style={{
             fontSize: 9,
             color,
-            background: `${color}22`,
+            background: `${color}18`,
             padding: "2px 6px",
             borderRadius: 6,
             fontWeight: 700,
@@ -168,7 +169,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
   ];
 
   return (
-    <div style={{ minHeight: "100vh", background: "#0a0a12", color: "#f0f0f5" }}>
+    <div style={{ minHeight: "100vh", background: "#f8fafc", color: "#0f172a" }}>
 
       {/* ── 스티키 네비 ── */}
       <nav
@@ -176,10 +177,11 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
           position: "sticky",
           top: 0,
           zIndex: 100,
-          background: "rgba(10,10,18,0.92)",
+          background: "rgba(248,250,252,0.95)",
           backdropFilter: "blur(12px)",
-          borderBottom: "1px solid #2a2a45",
+          borderBottom: "1px solid #e2e8f0",
           padding: "0 24px",
+          boxShadow: "0 1px 8px rgba(0,0,0,0.06)",
         }}
       >
         <div
@@ -198,7 +200,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
               display: "flex",
               alignItems: "center",
               gap: 8,
-              color: "#9090a8",
+              color: "#475569",
               textDecoration: "none",
               fontSize: 13,
               fontWeight: 600,
@@ -207,7 +209,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
           >
             ← 홈
           </Link>
-          <span style={{ color: "#2a2a45" }}>|</span>
+          <span style={{ color: "#e2e8f0" }}>|</span>
           <h1
             style={{
               margin: 0,
@@ -215,7 +217,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
               fontWeight: 900,
               fontFamily: "'Bebas Neue', sans-serif",
               letterSpacing: 3,
-              background: "linear-gradient(135deg, #f59e0b, #ef4444)",
+              background: "linear-gradient(135deg, #16a34a, #15803d)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
@@ -225,16 +227,15 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
         </div>
       </nav>
 
-      {/* ── 히어로 섹션 ── */}
+      {/* ── 히어로 섹션 (이미지 위 — 다크 오버레이 유지) ── */}
       <div style={{ position: "relative", height: 480, overflow: "hidden" }}>
-        {/* 배경 블러 이미지 */}
         {!imgError && (
           <Image
             src={item.thumb}
             alt=""
             fill
             sizes="100vw"
-            style={{ objectFit: "cover", filter: "blur(24px) brightness(0.35)", transform: "scale(1.1)" }}
+            style={{ objectFit: "cover", filter: "blur(24px) brightness(0.4)", transform: "scale(1.1)" }}
             onError={() => setImgError(true)}
           />
         )}
@@ -242,12 +243,22 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to bottom, rgba(10,10,18,0.3) 0%, rgba(10,10,18,0.85) 70%, #0a0a12 100%)",
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.75) 65%, #0f172a 100%)",
           }}
         />
 
         {/* 매체 컬러 바 */}
-        <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: typeColor }} />
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            height: 3,
+            background: typeColor,
+            boxShadow: `0 2px 12px ${typeColor}88`,
+          }}
+        />
 
         {/* 콘텐츠 오버레이 */}
         <div
@@ -271,8 +282,8 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                 borderRadius: 12,
                 overflow: "hidden",
                 flexShrink: 0,
-                border: `2px solid ${typeColor}55`,
-                boxShadow: `0 16px 48px rgba(0,0,0,0.6), 0 0 0 1px ${typeColor}33`,
+                border: `2px solid ${typeColor}66`,
+                boxShadow: `0 16px 48px rgba(0,0,0,0.5), 0 0 0 1px ${typeColor}33`,
               }}
             >
               <Image src={item.thumb} alt={item.title} fill sizes="140px" style={{ objectFit: "cover" }} />
@@ -284,7 +295,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                 <span
                   style={{
                     background: typeColor,
-                    color: "#000",
+                    color: "#ffffff",
                     fontSize: 11,
                     fontWeight: 900,
                     padding: "3px 10px",
@@ -298,7 +309,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                 {item.community_heat > 90 && (
                   <span
                     style={{
-                      background: "#ef444422",
+                      background: "rgba(239,68,68,0.2)",
                       border: "1px solid #ef4444",
                       borderRadius: 4,
                       padding: "2px 8px",
@@ -317,7 +328,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                   margin: "0 0 6px",
                   fontSize: "clamp(24px, 4vw, 38px)",
                   fontWeight: 900,
-                  color: "#f0f0f5",
+                  color: "#ffffff",
                   fontFamily: "'Noto Sans KR', sans-serif",
                   lineHeight: 1.2,
                   textShadow: "0 2px 12px rgba(0,0,0,0.8)",
@@ -326,105 +337,54 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                 {item.title}
               </h2>
 
-              <p style={{ margin: "0 0 14px", fontSize: 14, color: "#9090a8" }}>
+              <p style={{ margin: "0 0 14px", fontSize: 14, color: "rgba(255,255,255,0.65)" }}>
                 {item.year} · {item.genre.join(", ")} · {item.platform}
               </p>
 
               {/* 평점 뱃지 */}
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    background: "rgba(0,0,0,0.5)",
-                    backdropFilter: "blur(8px)",
-                    border: "1px solid #2a2a45",
-                    borderRadius: 10,
-                    padding: "8px 16px",
-                  }}
-                >
-                  <span style={{ fontSize: 16 }}>⭐</span>
-                  <div>
-                    <div
-                      style={{
-                        fontSize: 26,
-                        fontWeight: 900,
-                        color: "#f0f0f5",
-                        fontFamily: "'Bebas Neue', monospace",
-                        lineHeight: 1,
-                      }}
-                    >
-                      {item.score.toFixed(1)}
+                {[
+                  { icon: "⭐", value: item.score.toFixed(1), label: "전문 평점", color: "#ffffff" },
+                  { icon: "💬", value: item.community_score.toFixed(1), label: "커뮤니티 평점", color: "#ffffff" },
+                  { icon: "📺", value: item.youtube_count.toLocaleString(), label: "유튜브 리뷰", color: "#ef4444" },
+                ].map(({ icon, value, label, color }) => (
+                  <div
+                    key={label}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 8,
+                      background: "rgba(0,0,0,0.45)",
+                      backdropFilter: "blur(8px)",
+                      border: "1px solid rgba(255,255,255,0.15)",
+                      borderRadius: 10,
+                      padding: "8px 16px",
+                    }}
+                  >
+                    <span style={{ fontSize: 16 }}>{icon}</span>
+                    <div>
+                      <div
+                        style={{
+                          fontSize: 26,
+                          fontWeight: 900,
+                          color,
+                          fontFamily: "'Bebas Neue', monospace",
+                          lineHeight: 1,
+                        }}
+                      >
+                        {value}
+                      </div>
+                      <div style={{ fontSize: 9, color: "rgba(255,255,255,0.5)", marginTop: 1 }}>{label}</div>
                     </div>
-                    <div style={{ fontSize: 9, color: "#9090a8", marginTop: 1 }}>전문 평점</div>
                   </div>
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    background: "rgba(0,0,0,0.5)",
-                    backdropFilter: "blur(8px)",
-                    border: "1px solid #2a2a45",
-                    borderRadius: 10,
-                    padding: "8px 16px",
-                  }}
-                >
-                  <span style={{ fontSize: 16 }}>💬</span>
-                  <div>
-                    <div
-                      style={{
-                        fontSize: 26,
-                        fontWeight: 900,
-                        color: "#f0f0f5",
-                        fontFamily: "'Bebas Neue', monospace",
-                        lineHeight: 1,
-                      }}
-                    >
-                      {item.community_score.toFixed(1)}
-                    </div>
-                    <div style={{ fontSize: 9, color: "#9090a8", marginTop: 1 }}>커뮤니티 평점</div>
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    background: "rgba(0,0,0,0.5)",
-                    backdropFilter: "blur(8px)",
-                    border: "1px solid #2a2a45",
-                    borderRadius: 10,
-                    padding: "8px 16px",
-                  }}
-                >
-                  <span style={{ fontSize: 16 }}>📺</span>
-                  <div>
-                    <div
-                      style={{
-                        fontSize: 26,
-                        fontWeight: 900,
-                        color: "#ef4444",
-                        fontFamily: "'Bebas Neue', monospace",
-                        lineHeight: 1,
-                      }}
-                    >
-                      {item.youtube_count.toLocaleString()}
-                    </div>
-                    <div style={{ fontSize: 9, color: "#9090a8", marginTop: 1 }}>유튜브 리뷰</div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* ── 본문 ── */}
+      {/* ── 본문 (히어로 아래 부터 라이트 테마) ── */}
       <main style={{ maxWidth: 1000, margin: "0 auto", padding: "32px 24px 80px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: 32 }}>
 
@@ -434,15 +394,16 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
             {/* 커뮤니티 열기 바 */}
             <section
               style={{
-                background: "#16162a",
-                border: "1px solid #2a2a45",
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
                 borderRadius: 14,
                 padding: "20px 24px",
                 marginBottom: 20,
+                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
-                <h3 style={{ margin: 0, fontSize: 12, color: "#606078", textTransform: "uppercase", letterSpacing: 2 }}>
+                <h3 style={{ margin: 0, fontSize: 12, color: "#94a3b8", textTransform: "uppercase", letterSpacing: 2 }}>
                   커뮤니티 열기
                 </h3>
                 <span
@@ -454,10 +415,10 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                   }}
                 >
                   {item.community_heat}
-                  <span style={{ fontSize: 12, color: "#606078", marginLeft: 3 }}>/ 100</span>
+                  <span style={{ fontSize: 12, color: "#94a3b8", marginLeft: 3 }}>/ 100</span>
                 </span>
               </div>
-              <div style={{ height: 10, borderRadius: 5, background: "#2a2a45", overflow: "hidden" }}>
+              <div style={{ height: 10, borderRadius: 5, background: "#f1f5f9", overflow: "hidden" }}>
                 <div
                   style={{
                     height: "100%",
@@ -476,18 +437,18 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
 
               {/* 긍정 반응 */}
               <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 10 }}>
-                <div style={{ flex: 1, height: 6, borderRadius: 3, background: "rgba(231,76,60,0.2)", overflow: "hidden" }}>
+                <div style={{ flex: 1, height: 6, borderRadius: 3, background: "#fee2e2", overflow: "hidden" }}>
                   <div
                     style={{
                       height: "100%",
                       width: `${positivePercent}%`,
-                      background: "#2ecc71",
+                      background: "#16a34a",
                       borderRadius: 3,
                       transition: "width 0.8s ease",
                     }}
                   />
                 </div>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#2ecc71", flexShrink: 0 }}>
+                <span style={{ fontSize: 13, fontWeight: 700, color: "#16a34a", flexShrink: 0 }}>
                   긍정 {positivePercent}%
                 </span>
               </div>
@@ -496,42 +457,44 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
             {/* 시놉시스 */}
             <section
               style={{
-                background: "#16162a",
-                border: "1px solid #2a2a45",
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
                 borderRadius: 14,
                 padding: "20px 24px",
                 marginBottom: 20,
+                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
               }}
             >
               <h3
                 style={{
                   margin: "0 0 12px",
                   fontSize: 12,
-                  color: "#606078",
+                  color: "#94a3b8",
                   textTransform: "uppercase",
                   letterSpacing: 2,
                 }}
               >
                 시놉시스
               </h3>
-              <p style={{ margin: 0, fontSize: 15, color: "#c0c0d0", lineHeight: 1.8 }}>{item.summary}</p>
+              <p style={{ margin: 0, fontSize: 15, color: "#475569", lineHeight: 1.8 }}>{item.summary}</p>
             </section>
 
             {/* 커뮤니티 반응 */}
             <section
               style={{
-                background: "#16162a",
-                border: "1px solid #2a2a45",
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
                 borderRadius: 14,
                 padding: "20px 24px",
                 marginBottom: 20,
+                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
               }}
             >
               <h3
                 style={{
                   margin: "0 0 16px",
                   fontSize: 12,
-                  color: "#606078",
+                  color: "#94a3b8",
                   textTransform: "uppercase",
                   letterSpacing: 2,
                 }}
@@ -543,8 +506,8 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                   <div
                     key={`${r.source}-${i}`}
                     style={{
-                      background: "#1e1e35",
-                      border: "1px solid #2a2a45",
+                      background: "#f8fafc",
+                      border: "1px solid #e2e8f0",
                       borderLeft: `3px solid ${typeColor}`,
                       borderRadius: "0 10px 10px 0",
                       padding: "14px 16px",
@@ -556,7 +519,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                           fontSize: 10,
                           fontWeight: 700,
                           color: typeColor,
-                          background: `${typeColor}18`,
+                          background: `${typeColor}12`,
                           padding: "2px 8px",
                           borderRadius: 4,
                           letterSpacing: 0.5,
@@ -565,7 +528,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                         {r.source}
                       </span>
                       <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                        <div style={{ width: 60, height: 4, borderRadius: 2, background: "#2a2a45", overflow: "hidden" }}>
+                        <div style={{ width: 60, height: 4, borderRadius: 2, background: "#f1f5f9", overflow: "hidden" }}>
                           <div
                             style={{
                               height: "100%",
@@ -575,39 +538,39 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                             }}
                           />
                         </div>
-                        <span style={{ fontSize: 11, color: "#9090a8", fontFamily: "monospace" }}>{r.heat}</span>
+                        <span style={{ fontSize: 11, color: "#94a3b8", fontFamily: "monospace" }}>{r.heat}</span>
                       </div>
                     </div>
-                    <p style={{ margin: 0, fontSize: 14, color: "#d0d0e0", lineHeight: 1.6 }}>{r.text}</p>
+                    <p style={{ margin: 0, fontSize: 14, color: "#475569", lineHeight: 1.6 }}>{r.text}</p>
                   </div>
                 ))}
               </div>
             </section>
 
-            {/* 매체 연결 */}
+            {/* ── 매체 연결 (핵심 차별점) ── */}
             {(linkedItem || backlinkedItems.length > 0) && (
               <section
                 style={{
-                  background: "#16162a",
-                  border: "1px solid #2a2a45",
+                  background: "linear-gradient(135deg, #064e3b 0%, #065f46 50%, #15803d 100%)",
                   borderRadius: 14,
                   padding: "20px 24px",
                   marginBottom: 20,
+                  boxShadow: "0 6px 24px rgba(22,163,74,0.2)",
                 }}
               >
                 <h3
                   style={{
-                    margin: "0 0 8px",
-                    fontSize: 12,
-                    color: "#606078",
+                    margin: "0 0 4px",
+                    fontSize: 11,
+                    color: "rgba(255,255,255,0.5)",
                     textTransform: "uppercase",
                     letterSpacing: 2,
                   }}
                 >
-                  매체 연결
+                  ✦ Cross-Media
                 </h3>
-                <p style={{ margin: "0 0 16px", fontSize: 12, color: "#606078" }}>
-                  같은 IP의 다른 매체에서의 반응을 확인하세요
+                <p style={{ margin: "0 0 16px", fontSize: 15, color: "#ffffff", fontWeight: 800 }}>
+                  같은 IP, 다른 매체에서의 반응
                 </p>
 
                 {/* 매체 흐름 */}
@@ -620,7 +583,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                   />
                   {linkedItem && (
                     <>
-                      <span style={{ fontSize: 20, color: "#2a2a45" }}>→</span>
+                      <span style={{ fontSize: 20, color: "rgba(255,255,255,0.35)" }}>→</span>
                       <MediaChip
                         type={linkedItem.type}
                         score={linkedItem.community_score}
@@ -630,7 +593,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                   )}
                   {backlinkedItems.map((b) => (
                     <span key={b.id} style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                      <span style={{ fontSize: 20, color: "#2a2a45" }}>↔</span>
+                      <span style={{ fontSize: 20, color: "rgba(255,255,255,0.35)" }}>↔</span>
                       <MediaChip type={b.type} score={b.community_score} href={`/contents/${b.id}`} />
                     </span>
                   ))}
@@ -645,12 +608,13 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                       gridTemplateColumns: "88px 1fr",
                       gap: 14,
                       padding: 14,
-                      background: `linear-gradient(135deg, ${TYPE_COLOR[linkedItem.type]}18, #1e1e35)`,
-                      border: `1px solid ${TYPE_COLOR[linkedItem.type]}44`,
+                      background: "rgba(255,255,255,0.12)",
+                      border: `1px solid rgba(255,255,255,0.2)`,
                       borderLeft: `3px solid ${TYPE_COLOR[linkedItem.type]}`,
                       borderRadius: "0 12px 12px 0",
                       textDecoration: "none",
-                      transition: "border-color 0.2s, background 0.2s",
+                      transition: "background 0.2s",
+                      backdropFilter: "blur(4px)",
                     }}
                   >
                     <div
@@ -677,7 +641,7 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                           style={{
                             fontSize: 10,
                             color: TYPE_COLOR[linkedItem.type],
-                            background: `${TYPE_COLOR[linkedItem.type]}18`,
+                            background: `${TYPE_COLOR[linkedItem.type]}22`,
                             padding: "2px 7px",
                             borderRadius: 4,
                             fontWeight: 800,
@@ -685,17 +649,17 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                         >
                           {linkedItem.type}
                         </span>
-                        <span style={{ fontSize: 14, color: "#f0f0f5", fontWeight: 800 }}>{linkedItem.title}</span>
-                        <span style={{ marginLeft: "auto", fontSize: 12, color: "#9090a8" }}>열기 ↗</span>
+                        <span style={{ fontSize: 14, color: "#ffffff", fontWeight: 800 }}>{linkedItem.title}</span>
+                        <span style={{ marginLeft: "auto", fontSize: 12, color: "rgba(255,255,255,0.5)" }}>열기 ↗</span>
                       </div>
-                      <p style={{ margin: 0, fontSize: 12, color: "#9090a8" }}>
+                      <p style={{ margin: 0, fontSize: 12, color: "rgba(255,255,255,0.55)" }}>
                         {linkedItem.year} · {linkedItem.platform}
                       </p>
                       <p
                         style={{
                           margin: "6px 0 0",
                           fontSize: 12,
-                          color: "#9090a8",
+                          color: "rgba(255,255,255,0.65)",
                           fontStyle: "italic",
                           lineHeight: 1.45,
                           overflow: "hidden",
@@ -713,6 +677,46 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                     </div>
                   </Link>
                 )}
+
+                {/* 역방향 링크 카드들 */}
+                {backlinkedItems.length > 0 && (
+                  <div style={{ marginTop: linkedItem ? 12 : 0, display: "flex", flexDirection: "column", gap: 8 }}>
+                    {backlinkedItems.map((b) => (
+                      <Link
+                        key={b.id}
+                        href={`/contents/${b.id}`}
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 10,
+                          padding: "10px 14px",
+                          background: "rgba(255,255,255,0.1)",
+                          border: `1px solid rgba(255,255,255,0.15)`,
+                          borderLeft: `3px solid ${TYPE_COLOR[b.type]}`,
+                          borderRadius: "0 10px 10px 0",
+                          textDecoration: "none",
+                          transition: "background 0.2s",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: 10,
+                            color: TYPE_COLOR[b.type],
+                            background: `${TYPE_COLOR[b.type]}22`,
+                            padding: "2px 6px",
+                            borderRadius: 4,
+                            fontWeight: 800,
+                            flexShrink: 0,
+                          }}
+                        >
+                          {b.type}
+                        </span>
+                        <span style={{ fontSize: 13, color: "#ffffff", fontWeight: 700 }}>{b.title}</span>
+                        <span style={{ marginLeft: "auto", fontSize: 11, color: "rgba(255,255,255,0.45)" }}>↔ 열기 ↗</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </section>
             )}
 
@@ -726,9 +730,9 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                     borderRadius: 20,
                     fontSize: 12,
                     fontWeight: 500,
-                    background: "rgba(255,255,255,0.06)",
-                    color: "#9090a8",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "#f1f5f9",
+                    color: "#475569",
+                    border: "1px solid #e2e8f0",
                     cursor: "pointer",
                     transition: "all 0.15s",
                   }}
@@ -745,17 +749,18 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
             {/* 평점 분포 */}
             <div
               style={{
-                background: "#16162a",
-                border: "1px solid #2a2a45",
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
                 borderRadius: 14,
                 padding: "20px 20px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
               }}
             >
               <h4
                 style={{
                   margin: "0 0 14px",
                   fontSize: 11,
-                  color: "#606078",
+                  color: "#94a3b8",
                   textTransform: "uppercase",
                   letterSpacing: 2,
                 }}
@@ -769,17 +774,18 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
             {scoreChartItems.length > 1 && (
               <div
                 style={{
-                  background: "#16162a",
-                  border: "1px solid #2a2a45",
+                  background: "#ffffff",
+                  border: "1px solid #e2e8f0",
                   borderRadius: 14,
                   padding: "20px 20px",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
                 }}
               >
                 <h4
                   style={{
                     margin: "0 0 14px",
                     fontSize: 11,
-                    color: "#606078",
+                    color: "#94a3b8",
                     textTransform: "uppercase",
                     letterSpacing: 2,
                   }}
@@ -793,17 +799,18 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
             {/* 장르 & 메타 */}
             <div
               style={{
-                background: "#16162a",
-                border: "1px solid #2a2a45",
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
                 borderRadius: 14,
                 padding: "20px 20px",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
               }}
             >
               <h4
                 style={{
                   margin: "0 0 14px",
                   fontSize: 11,
-                  color: "#606078",
+                  color: "#94a3b8",
                   textTransform: "uppercase",
                   letterSpacing: 2,
                 }}
@@ -818,10 +825,10 @@ export default function DetailClient({ item, linkedItem, allItems }: Props) {
                   { label: "장르", value: item.genre.join(", ") },
                 ].map(({ label, value }) => (
                   <>
-                    <dt key={`dt-${label}`} style={{ fontSize: 11, color: "#606078", paddingTop: 1 }}>
+                    <dt key={`dt-${label}`} style={{ fontSize: 11, color: "#94a3b8", paddingTop: 1 }}>
                       {label}
                     </dt>
-                    <dd key={`dd-${label}`} style={{ margin: 0, fontSize: 13, color: "#d0d0e0", fontWeight: 600 }}>
+                    <dd key={`dd-${label}`} style={{ margin: 0, fontSize: 13, color: "#0f172a", fontWeight: 600 }}>
                       {value}
                     </dd>
                   </>

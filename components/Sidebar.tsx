@@ -9,17 +9,18 @@ function TrendingSection({ data }: TrendingSectionProps) {
   return (
     <div
       style={{
-        background: "#16162a",
-        border: "1px solid #2a2a45",
-        borderRadius: 12,
+        background: "#ffffff",
+        border: "1px solid #e2e8f0",
+        borderRadius: 14,
         padding: 16,
+        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
       }}
     >
       <h3
         style={{
           margin: "0 0 14px",
           fontSize: 11,
-          color: "#606078",
+          color: "#94a3b8",
           textTransform: "uppercase",
           letterSpacing: 2,
           display: "flex",
@@ -38,7 +39,7 @@ function TrendingSection({ data }: TrendingSectionProps) {
             alignItems: "flex-start",
             gap: 10,
             padding: "10px 0",
-            borderBottom: "1px solid #1e1e35",
+            borderBottom: "1px solid #f1f5f9",
             cursor: "pointer",
             transition: "background 0.15s",
           }}
@@ -47,7 +48,7 @@ function TrendingSection({ data }: TrendingSectionProps) {
             style={{
               fontSize: 16,
               fontWeight: 900,
-              color: t.rank <= 3 ? "#f59e0b" : "#2a2a45",
+              color: t.rank <= 3 ? "#f59e0b" : "#cbd5e1",
               fontFamily: "'Bebas Neue', sans-serif",
               width: 20,
               textAlign: "center",
@@ -60,7 +61,7 @@ function TrendingSection({ data }: TrendingSectionProps) {
             <div
               style={{
                 fontSize: 13,
-                color: "#f0f0f5",
+                color: "#0f172a",
                 fontWeight: 700,
                 whiteSpace: "nowrap",
                 overflow: "hidden",
@@ -75,7 +76,7 @@ function TrendingSection({ data }: TrendingSectionProps) {
                   fontSize: 10,
                   color: TYPE_COLOR[t.type],
                   fontWeight: 700,
-                  background: `${TYPE_COLOR[t.type]}18`,
+                  background: `${TYPE_COLOR[t.type]}15`,
                   padding: "1px 6px",
                   borderRadius: 999,
                 }}
@@ -83,9 +84,9 @@ function TrendingSection({ data }: TrendingSectionProps) {
                 {t.type}
               </span>
             </div>
-            {/* 트렌딩 이유 (Section 3) */}
+            {/* 트렌딩 이유 */}
             {t.reason && (
-              <p style={{ margin: "4px 0 0", fontSize: 11, color: "#606078", lineHeight: 1.3 }}>
+              <p style={{ margin: "4px 0 0", fontSize: 11, color: "#94a3b8", lineHeight: 1.3 }}>
                 {t.reason}
               </p>
             )}
@@ -98,16 +99,16 @@ function TrendingSection({ data }: TrendingSectionProps) {
                 t.change === "NEW"
                   ? "#f59e0b"
                   : t.change?.startsWith("+")
-                  ? "#2ecc71"
+                  ? "#16a34a"
                   : t.change === "—"
-                  ? "#2a2a45"
+                  ? "#cbd5e1"
                   : "#ef4444",
               flexShrink: 0,
               ...(t.change === "NEW"
                 ? {
                     fontSize: 9,
                     padding: "2px 6px",
-                    background: "rgba(245,158,11,0.15)",
+                    background: "#fef3c7",
                     borderRadius: 10,
                     fontFamily: "inherit",
                     fontWeight: 700,
@@ -133,17 +134,18 @@ function StatsSection({ items }: StatsSectionProps) {
   return (
     <div
       style={{
-        background: "#16162a",
-        border: "1px solid #2a2a45",
-        borderRadius: 12,
+        background: "#ffffff",
+        border: "1px solid #e2e8f0",
+        borderRadius: 14,
         padding: 16,
+        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
       }}
     >
       <h3
         style={{
           margin: "0 0 14px",
           fontSize: 11,
-          color: "#606078",
+          color: "#94a3b8",
           textTransform: "uppercase",
           letterSpacing: 2,
         }}
@@ -156,10 +158,10 @@ function StatsSection({ items }: StatsSectionProps) {
         return (
           <div key={type} style={{ marginBottom: 8 }}>
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 3 }}>
-              <span style={{ fontSize: 11, color: "#9090a8" }}>{type}</span>
-              <span style={{ fontSize: 11, color, fontFamily: "monospace" }}>{count}</span>
+              <span style={{ fontSize: 11, color: "#475569" }}>{type}</span>
+              <span style={{ fontSize: 11, color, fontFamily: "monospace", fontWeight: 700 }}>{count}</span>
             </div>
-            <div style={{ height: 4, background: "#1e1e35", borderRadius: 2 }}>
+            <div style={{ height: 4, background: "#f1f5f9", borderRadius: 2 }}>
               <div
                 style={{
                   height: "100%",

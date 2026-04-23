@@ -15,10 +15,11 @@ export default function Header({ activeTab, onTabChange, search, onSearchChange 
         position: "sticky",
         top: 0,
         zIndex: 100,
-        background: "rgba(10,10,18,0.92)",
+        background: "rgba(248,250,252,0.95)",
         backdropFilter: "blur(12px)",
-        borderBottom: "1px solid #2a2a45",
+        borderBottom: "1px solid #e2e8f0",
         padding: "0 24px",
+        boxShadow: "0 1px 8px rgba(0,0,0,0.06)",
       }}
     >
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -38,14 +39,14 @@ export default function Header({ activeTab, onTabChange, search, onSearchChange 
               fontWeight: 900,
               fontFamily: "'Bebas Neue', sans-serif",
               letterSpacing: 3,
-              background: "linear-gradient(135deg, #f59e0b, #ef4444)",
+              background: "linear-gradient(135deg, #16a34a, #15803d)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
             }}
           >
             MEDIAPULSE
           </h1>
-          <span style={{ fontSize: 11, color: "#606078", letterSpacing: 2 }}>커뮤니티 반응 큐레이션</span>
+          <span style={{ fontSize: 11, color: "#94a3b8", letterSpacing: 2 }}>커뮤니티 반응 큐레이션</span>
         </div>
 
         {/* 탭 네비게이션 */}
@@ -61,9 +62,9 @@ export default function Header({ activeTab, onTabChange, search, onSearchChange 
                 padding: "8px 16px",
                 fontSize: 13,
                 fontWeight: 700,
-                color: activeTab === tab ? (tab === "전체" ? "#f59e0b" : TYPE_COLOR[tab]) : "#606078",
+                color: activeTab === tab ? (tab === "전체" ? "#16a34a" : TYPE_COLOR[tab]) : "#94a3b8",
                 borderBottom: `2px solid ${
-                  activeTab === tab ? (tab === "전체" ? "#f59e0b" : TYPE_COLOR[tab]) : "transparent"
+                  activeTab === tab ? (tab === "전체" ? "#16a34a" : TYPE_COLOR[tab]) : "transparent"
                 }`,
                 transition: "all 0.2s ease",
                 fontFamily: "'Noto Sans KR', sans-serif",
@@ -74,15 +75,9 @@ export default function Header({ activeTab, onTabChange, search, onSearchChange 
           ))}
         </nav>
 
-        {/* 검색바 — 탭 아래 중앙 배치 (Section 5, 옵션 A) */}
+        {/* 검색바 — 탭 아래 중앙 배치 */}
         <div style={{ padding: "10px 0 12px" }}>
-          <div
-            style={{
-              maxWidth: 600,
-              margin: "0 auto",
-              position: "relative",
-            }}
-          >
+          <div style={{ maxWidth: 600, margin: "0 auto", position: "relative" }}>
             <span
               aria-hidden
               style={{
@@ -91,7 +86,7 @@ export default function Header({ activeTab, onTabChange, search, onSearchChange 
                 top: "50%",
                 transform: "translateY(-50%)",
                 fontSize: 14,
-                color: "#606078",
+                color: "#94a3b8",
               }}
             >
               🔍
@@ -102,22 +97,23 @@ export default function Header({ activeTab, onTabChange, search, onSearchChange 
               placeholder="제목, 장르, 태그 검색..."
               style={{
                 width: "100%",
-                background: "#16162a",
-                border: "1px solid #2a2a45",
+                background: "#ffffff",
+                border: "1px solid #e2e8f0",
                 borderRadius: 12,
                 padding: "12px 20px 12px 46px",
-                color: "#f0f0f5",
+                color: "#0f172a",
                 fontSize: 14,
                 outline: "none",
                 transition: "border-color 0.2s, box-shadow 0.2s",
+                boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
               }}
               onFocus={(e) => {
-                e.currentTarget.style.borderColor = "#f59e0b";
-                e.currentTarget.style.boxShadow = "0 0 0 3px rgba(245,158,11,0.15)";
+                e.currentTarget.style.borderColor = "#16a34a";
+                e.currentTarget.style.boxShadow = "0 0 0 3px rgba(22,163,74,0.12)";
               }}
               onBlur={(e) => {
-                e.currentTarget.style.borderColor = "#2a2a45";
-                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.borderColor = "#e2e8f0";
+                e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.05)";
               }}
             />
           </div>

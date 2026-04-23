@@ -24,31 +24,31 @@ function CrossMediaBadge({ crossMedia }: CrossMediaBadgeProps) {
         display: "flex",
         alignItems: "center",
         gap: 6,
-        background: `linear-gradient(135deg, ${targetColor}22, rgba(255,255,255,0.04))`,
-        border: `1px solid ${targetColor}55`,
-        borderRadius: 20,
-        padding: "6px 10px",
+        background: `linear-gradient(135deg, ${targetColor}18, rgba(0,0,0,0.02))`,
+        border: `1px solid ${targetColor}44`,
+        borderLeft: `3px solid ${targetColor}`,
+        borderRadius: "0 20px 20px 0",
+        padding: "7px 12px",
         cursor: "pointer",
         marginTop: 8,
-        boxShadow: `0 0 0 1px ${targetColor}22, 0 8px 30px ${targetColor}18`,
+        boxShadow: `0 2px 8px ${targetColor}18`,
         textDecoration: "none",
       }}
     >
       <span
         aria-hidden
         style={{
-          width: 8,
-          height: 8,
+          width: 7,
+          height: 7,
           borderRadius: 999,
           background: targetColor,
-          boxShadow: `0 0 18px ${targetColor}aa`,
           flexShrink: 0,
         }}
       />
-      <span style={{ fontSize: 10, color: "#9090a8", fontWeight: 800, letterSpacing: 1 }}>연결작</span>
+      <span style={{ fontSize: 10, color: "#94a3b8", fontWeight: 800, letterSpacing: 1 }}>연결작</span>
       <span style={{ fontSize: 10, color: targetColor, fontWeight: 800 }}>{crossMedia.type}</span>
-      <span style={{ fontSize: 10, color: "#f0f0f5", fontWeight: 700 }}>{crossMedia.title}</span>
-      <span aria-hidden style={{ marginLeft: "auto", fontSize: 11, color: "#606078" }}>
+      <span style={{ fontSize: 10, color: "#0f172a", fontWeight: 700 }}>{crossMedia.title}</span>
+      <span aria-hidden style={{ marginLeft: "auto", fontSize: 11, color: "#94a3b8" }}>
         ↗
       </span>
     </Link>
@@ -62,7 +62,7 @@ function CommunityReactionBar({ youtubeCount, communityScore }: { youtubeCount: 
     <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 0" }}>
       <div style={{ display: "flex", alignItems: "center", gap: 5, flexShrink: 0 }}>
         <span style={{ fontSize: 12 }}>💬</span>
-        <span style={{ fontSize: 11, color: "#9090a8" }}>{youtubeCount.toLocaleString()}</span>
+        <span style={{ fontSize: 11, color: "#94a3b8" }}>{youtubeCount.toLocaleString()}</span>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 6, flex: 1 }}>
         <div
@@ -70,7 +70,7 @@ function CommunityReactionBar({ youtubeCount, communityScore }: { youtubeCount: 
             flex: 1,
             height: 6,
             borderRadius: 3,
-            background: "rgba(231,76,60,0.25)",
+            background: "#fee2e2",
             overflow: "hidden",
           }}
         >
@@ -79,12 +79,12 @@ function CommunityReactionBar({ youtubeCount, communityScore }: { youtubeCount: 
               width: `${positivePercent}%`,
               height: "100%",
               borderRadius: 3,
-              background: "#2ecc71",
+              background: "#16a34a",
               transition: "width 0.6s ease",
             }}
           />
         </div>
-        <span style={{ fontSize: 11, fontWeight: 700, color: "#2ecc71", flexShrink: 0 }}>{positivePercent}%</span>
+        <span style={{ fontSize: 11, fontWeight: 700, color: "#16a34a", flexShrink: 0 }}>{positivePercent}%</span>
       </div>
     </div>
   );
@@ -110,21 +110,21 @@ export default function Card({ item }: CardProps) {
       style={{
         display: "block",
         textDecoration: "none",
-        background: isHovered ? "#1c1c38" : "#16162a",
-        border: `1px solid ${isHovered ? `${typeColor}55` : "#2a2a45"}`,
-        borderRadius: 12,
+        background: isHovered ? "#f8fafc" : "#ffffff",
+        border: `1px solid ${isHovered ? `${typeColor}55` : "#e2e8f0"}`,
+        borderRadius: 14,
         overflow: "hidden",
         transition: "all 0.25s ease",
         transform: isHovered ? "translateY(-4px)" : "none",
-        boxShadow: isHovered ? `0 12px 40px ${typeColor}22` : "none",
+        boxShadow: isHovered ? `0 12px 40px ${typeColor}22, 0 4px 16px rgba(0,0,0,0.08)` : "0 1px 3px rgba(0,0,0,0.06)",
       }}
     >
-      {/* Fix 3: 매체별 상단 컬러 바 — 4px + 하단 glow */}
+      {/* 매체별 상단 컬러 바 */}
       <div
         style={{
           height: 4,
           background: typeColor,
-          boxShadow: `0 2px 10px ${typeColor}88`,
+          boxShadow: `0 2px 8px ${typeColor}66`,
         }}
       />
 
@@ -144,7 +144,7 @@ export default function Card({ item }: CardProps) {
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(to bottom, transparent 40%, #16162a 100%)",
+            background: "linear-gradient(to bottom, transparent 35%, rgba(255,255,255,0.92) 100%)",
           }}
         />
         <div
@@ -153,7 +153,7 @@ export default function Card({ item }: CardProps) {
             top: 10,
             left: 10,
             background: typeColor,
-            color: "#000",
+            color: "#ffffff",
             fontSize: 10,
             fontWeight: 900,
             padding: "3px 8px",
@@ -171,20 +171,21 @@ export default function Card({ item }: CardProps) {
               position: "absolute",
               top: 10,
               right: 10,
-              background: "#ef444422",
+              background: "rgba(239,68,68,0.15)",
               border: "1px solid #ef4444",
               borderRadius: 4,
               padding: "2px 6px",
               fontSize: 9,
               color: "#ef4444",
               fontWeight: 700,
+              backdropFilter: "blur(4px)",
             }}
           >
             🔥 HOT
           </div>
         )}
 
-        {/* 개선된 평점 표시 */}
+        {/* 평점 뱃지 */}
         <div
           style={{
             position: "absolute",
@@ -193,7 +194,7 @@ export default function Card({ item }: CardProps) {
             display: "flex",
             alignItems: "center",
             gap: 0,
-            background: "rgba(0,0,0,0.55)",
+            background: "rgba(0,0,0,0.6)",
             borderRadius: 10,
             backdropFilter: "blur(8px)",
             overflow: "hidden",
@@ -213,9 +214,9 @@ export default function Card({ item }: CardProps) {
             >
               {item.score.toFixed(1)}
             </span>
-            <span style={{ fontSize: 8, color: "rgba(255,255,255,0.5)", marginTop: 1 }}>전문</span>
+            <span style={{ fontSize: 8, color: "rgba(255,255,255,0.6)", marginTop: 1 }}>전문</span>
           </div>
-          <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.15)" }} />
+          <div style={{ width: 1, height: 28, background: "rgba(255,255,255,0.2)" }} />
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "5px 10px" }}>
             <span style={{ fontSize: 9 }}>💬</span>
             <span
@@ -230,7 +231,7 @@ export default function Card({ item }: CardProps) {
             >
               {item.community_score.toFixed(1)}
             </span>
-            <span style={{ fontSize: 8, color: "rgba(255,255,255,0.5)", marginTop: 1 }}>커뮤</span>
+            <span style={{ fontSize: 8, color: "rgba(255,255,255,0.6)", marginTop: 1 }}>커뮤</span>
           </div>
         </div>
       </div>
@@ -242,14 +243,14 @@ export default function Card({ item }: CardProps) {
               margin: 0,
               fontSize: 15,
               fontWeight: 800,
-              color: "#f0f0f5",
+              color: "#0f172a",
               fontFamily: "'Noto Sans KR', sans-serif",
               lineHeight: 1.3,
             }}
           >
             {item.title}
           </h3>
-          <span style={{ fontSize: 11, color: "#606078", flexShrink: 0, marginLeft: 8 }}>{item.year}</span>
+          <span style={{ fontSize: 11, color: "#94a3b8", flexShrink: 0, marginLeft: 8 }}>{item.year}</span>
         </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: 4, margin: "8px 0" }}>
@@ -258,8 +259,8 @@ export default function Card({ item }: CardProps) {
               key={g}
               style={{
                 fontSize: 10,
-                color: "#606078",
-                background: "#1e1e35",
+                color: "#475569",
+                background: "#f1f5f9",
                 padding: "2px 6px",
                 borderRadius: 3,
               }}
@@ -270,10 +271,11 @@ export default function Card({ item }: CardProps) {
           <span
             style={{
               fontSize: 10,
-              color: `${typeColor}cc`,
-              background: `${typeColor}18`,
+              color: typeColor,
+              background: `${typeColor}15`,
               padding: "2px 6px",
               borderRadius: 3,
+              fontWeight: 600,
             }}
           >
             {item.platform}
@@ -285,7 +287,7 @@ export default function Card({ item }: CardProps) {
             style={{
               margin: "6px 0 8px",
               padding: "8px 10px",
-              background: "#1e1e35",
+              background: "#f8fafc",
               borderLeft: `2px solid ${typeColor}`,
               borderRadius: "0 6px 6px 0",
             }}
@@ -307,7 +309,7 @@ export default function Card({ item }: CardProps) {
               style={{
                 margin: 0,
                 fontSize: 12,
-                color: "#9090a8",
+                color: "#475569",
                 lineHeight: 1.45,
                 fontStyle: "italic",
               }}
@@ -316,7 +318,7 @@ export default function Card({ item }: CardProps) {
             </p>
           </div>
         ) : (
-          <p style={{ margin: "6px 0 8px", fontSize: 12, color: "#606078", lineHeight: 1.5 }}>{item.summary}</p>
+          <p style={{ margin: "6px 0 8px", fontSize: 12, color: "#475569", lineHeight: 1.5 }}>{item.summary}</p>
         )}
 
         <CommunityReactionBar youtubeCount={item.youtube_count} communityScore={item.community_score} />
@@ -331,9 +333,9 @@ export default function Card({ item }: CardProps) {
                 borderRadius: 20,
                 fontSize: 10,
                 fontWeight: 500,
-                background: "rgba(255,255,255,0.06)",
-                color: "#9090a8",
-                border: "1px solid rgba(255,255,255,0.08)",
+                background: "#f1f5f9",
+                color: "#94a3b8",
+                border: "1px solid #e2e8f0",
               }}
             >
               #{t}
